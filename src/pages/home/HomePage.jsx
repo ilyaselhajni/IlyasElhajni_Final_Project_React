@@ -139,7 +139,7 @@ const HomePage = () => {
                 <div className="bg-white flex flex-col items-center justify-end relative shadow-sm">
                     <img src={accessoriesImg} alt="Accessories" className="w-full  object-contain p-8" />
                     <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-white px-8 py-3 text-center shadow-md text-gray-800 font-medium text-lg tracking-wide">ACCESSORIES</div>
-                </div>
+                </div>  
             </div>   
         </div>
     );
