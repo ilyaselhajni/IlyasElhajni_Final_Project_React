@@ -11,14 +11,20 @@ import bagsImg from '../../assets/images/cards3.webp';
 import sunglassesImg from '../../assets/images/cards4.webp';
 import footwearImg from '../../assets/images/cards5.webp';
 import accessoriesImg from '../../assets/images/cards6.webp';
-import Img from '../../assets/images/shopy7.webp';
-
+import Img from '../../assets/images/shopi2.webp';
+import Img2 from '../../assets/images/shopy3.webp';
+import Img3 from '../../assets/images/shopy3.webp';
+import Img4 from '../../assets/images/shopy4.webp';
+import Img5 from '../../assets/images/shopy5.webp';
+import Img6 from '../../assets/images/shopy6.webp';
+import Img7 from '../../assets/images/shopy7.webp';
+import Img8 from '../../assets/images/shopy8.webp';
 const HomePage = () => {
     const sliderRef = useRef(null);
     const [isHovered, setIsHovered] = useState(false);
     const [currentSlide, setCurrentSlide] = useState(0);
     const [activeTab, setActiveTab] = useState('Best Seller');
-    const tabList = ['Best Seller', 'Featured', 'Home page'];
+    const tabList = ['all','Best Seller' ,'Featured', 'Home page'];
 
     const settings = {
         dots: true,
@@ -110,8 +116,8 @@ const HomePage = () => {
             image: dressesImg,
             isSale: true,
             oldPrice: 30.00,
-            category: 'Best Seller',
-        },
+            category: 'All',
+        }, 
         {
             id: 6,
             name: 'Boxy2 T-Shirt with Roll Sleeve',
@@ -138,7 +144,9 @@ const HomePage = () => {
             isSale: false,
             oldPrice: null,
             category: 'Featured',
-        },
+        }
+    ];
+    const filters = [,
         {   id: 9,
             name: 'Boxy T-Shirt with Roll Sleeve Detail',
             price: 20.00,
@@ -146,8 +154,64 @@ const HomePage = () => {
             isSale: false,
             oldPrice: null,
             category: 'Featured',
-        }
-    ];
+        }, 
+        {   id: 10,
+            name: 'Boxy T-Shirt with Roll Sleeve Detail',
+            price: 20.00,
+            image: Img2,
+            isSale: false,
+            oldPrice: null,
+            category: 'Featured',
+        },
+         {   id: 11,
+            name: 'Boxy T-Shirt with Roll Sleeve Detail',
+            price: 20.00,
+            image: Img3,
+            isSale: false,
+            oldPrice: null,
+            category: 'Featured',
+        },
+         {   id: 12,
+            name: 'Boxy T-Shirt with Roll Sleeve Detail',
+            price: 20.00,
+            image: Img4,
+            isSale: false,
+            oldPrice: null,
+            category: 'Featured',
+        },
+         {   id: 13,
+            name: 'Boxy T-Shirt with Roll Sleeve Detail',
+            price: 20.00,
+            image: Img5,
+            isSale: false,
+            oldPrice: null,
+            category: 'Featured',
+        },
+          {   id: 14,
+            name: 'Boxy T-Shirt with Roll Sleeve Detail',
+            price: 20.00,
+            image: Img6,
+            isSale: false,
+            oldPrice: null,
+            category: 'Featured',
+        },
+         {   id: 15,
+            name: 'Boxy T-Shirt with Roll Sleeve Detail',
+            price: 20.00,
+            image: Img7,
+            isSale: false,
+            oldPrice: null,
+            category: 'Featured',
+        },
+         {   id: 16,
+            name: 'Boxy T-Shirt with Roll Sleeve Detail',
+            price: 20.00,
+            image: Img8,
+            isSale: false,
+            oldPrice: null,
+            category: 'Featured',
+        },
+        ];
 
     const filteredProducts = products.filter(p => p.category === activeTab);
 
@@ -268,27 +332,34 @@ const HomePage = () => {
                         </button>
                     ))}
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-                    {filteredProducts.map(product => (
-                        <div key={product.id} className="bg-white flex flex-col items-start shadow-sm">
-                            <div className="relative w-full aspect-square overflow-hidden">
-                                <img src={product.image} alt={product.name} className="absolute inset-0 w-full h-full object-cover" />
-                                {product.isSale && (
-                                    <span className="absolute top-3 left-3 bg-[#E65641] text-white text-xs font-bold px-3 py-1 rounded-full font-montserrat">Sale</span>
-                                )}
-                            </div>
-                            <div className="p-4 w-full">
-                                <div className="font-montserrat text-sm text-gray-800 mb-1">{product.name}</div>
-                                <div className="flex items-center gap-2">
-                                    {product.isSale && (
-                                        <span className="text-gray-400 line-through text-xs font-montserrat">${product.oldPrice.toFixed(2)}</span>
-                                    )}
-                                    <span className={`text-base font-bold font-montserrat ${product.isSale ? 'text-[#E65641]' : 'text-gray-800'}`}>${product.price.toFixed(2)}</span>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
+               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+    {filters.map(filters => (
+        <div key={filters.id} className="bg-white flex flex-col items-start shadow-sm">
+            <div className="relative w-full aspect-square overflow-hidden">
+                <img src={filters.image} alt={filters.name} className="absolute inset-0 h-full object-cover" />
+                {filters.isSale && (
+                    <span className="absolute top-3 left-3 bg-[#E65641] text-white text-xs font-bold px-3 py-1 rounded-full font-montserrat">
+                        Sale
+                    </span>
+                )}
+            </div>
+            <div className="p-4">
+                <div className="font-montserrat text-sm text-gray-800 mb-1">{filters.name}</div>
+                <div className="flex items-center gap-2">
+                    {filters.isSale && filters.oldPrice && (
+                        <span className="text-gray-400 line-through text-xs font-montserrat">
+                            ${filters.oldPrice.toFixed(2)}
+                        </span>
+                    )}
+                    <span className={`text-base font-bold font-montserrat ${filters.isSale ? 'text-[#E65641]' : 'text-gray-800'}`}>
+                        ${filters.price.toFixed(2)}
+                    </span>
                 </div>
+            </div>
+        </div>
+    ))}
+</div>
+
             </div>
         </div>
     );
