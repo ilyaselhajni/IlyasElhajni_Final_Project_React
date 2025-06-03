@@ -22,6 +22,10 @@ import sunglassesImg2 from '../../assets/images/shop-item-09.jpg';
 
 import lookbookImg from '../../assets/images/cards1.webp';
 import dealImg from '../../assets/images/banner-08.jpg';
+import blogImg1 from '../../assets/images/blog-01.jpg';
+import blogImg2 from '../../assets/images/blog-02.jpg';
+import blogImg3 from '../../assets/images/blog-03.jpg';
+
 const HomePage = () => {
     const sliderRef = useRef(null);
     const [isHovered, setIsHovered] = useState(false);
@@ -429,6 +433,34 @@ const HomePage = () => {
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Blog Section */}
+            <div className="max-w-7xl mx-auto px-20 py-16">
+                <h2 className="text-3xl font-bold text-center mb-12 font-montserrat uppercase tracking-wide">Our Blog</h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+                    {/* Blog Card 1 */}
+                    <div className="bg-white flex flex-col items-start">
+                        <img src={blogImg1} alt="Blog 1" className="w-full aspect-square object-cover mb-6" />
+                        <div className="font-montserrat text-lg font-semibold text-gray-900 mb-2">Black Friday Guide: Best Sales & Discount Codes</div>
+                        <div className="text-gray-500 text-sm mb-4">by fashe-theme Admin on Dec 28,2017</div>
+                        <div className="text-gray-500 text-base leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sed turpis sed lorem dignissim vulputate nec cursus ante. Nunc sit...</div>
+                    </div>
+                    {/* Blog Card 2 */}
+                    <div className="bg-white flex flex-col items-start">
+                        <img src={blogImg2} alt="Blog 2" className="w-full aspect-square object-cover mb-6" />
+                        <div className="font-montserrat text-lg font-semibold text-gray-900 mb-2">The White Sneakers Nearly Every Fashion Girls Own</div>
+                        <div className="text-gray-500 text-sm mb-4">by fashe-theme Admin on Dec 28,2017</div>
+                        <div className="text-gray-500 text-base leading-relaxed">Duis ut velit gravida nibh bibendum commodo. Suspendisse pellentesque mattis augue id euismod. Interdum et...</div>
+                    </div>
+                    {/* Blog Card 3 */}
+                    <div className="bg-white flex flex-col items-start">
+                        <img src={blogImg3} alt="Blog 3" className="w-full aspect-square object-cover mb-6" />
+                        <div className="font-montserrat text-lg font-semibold text-gray-900 mb-2">New York SS 2018 Street Style: By Annina Mislin</div>
+                        <div className="text-gray-500 text-sm mb-4">by fashe-theme Admin on Dec 28,2017</div>
+                        <div className="text-gray-500 text-base leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sed turpis sed lorem dignissim vulputate nec cursus ante. Nunc sit...</div>
                     </div>
                 </div>
             </div>
