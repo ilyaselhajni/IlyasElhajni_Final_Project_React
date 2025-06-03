@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import logo from '../assets/images/logo.png.webp' 
 
 const socialIcons = [
   { icon: "fab fa-facebook-f", url: "#" },
@@ -57,7 +58,7 @@ export default function Navbar() {
       >
         {/* Logo */}
         <div className="flex items-center gap-2 text-3xl font-bold">
-          Fashe<span className="text-red-500">.</span>
+          <img src={logo} alt="" />
         </div>
         {/* Hamburger for mobile */}
         <button

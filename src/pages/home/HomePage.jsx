@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -13,18 +13,22 @@ import footwearImg from '../../assets/images/cards5.webp';
 import accessoriesImg from '../../assets/images/cards6.webp';
 import Img from '../../assets/images/shopi2.webp';
 import Img2 from '../../assets/images/shopy3.webp';
-import Img3 from '../../assets/images/shopy3.webp';
+import Img3 from '../../assets/images/shopy5.webp';
 import Img4 from '../../assets/images/shopy4.webp';
-import Img5 from '../../assets/images/shopy5.webp';
-import Img6 from '../../assets/images/shopy6.webp';
-import Img7 from '../../assets/images/shopy7.webp';
-import Img8 from '../../assets/images/shopy8.webp';
+import Img5 from '../../assets/images/shopy6.webp';
+import Img6 from '../../assets/images/shopy7.webp';
+import Img7 from '../../assets/images/shopy8.webp';
+import sunglassesImg2 from '../../assets/images/shop-item-09.jpg';
+
+import lookbookImg from '../../assets/images/cards1.webp';
+import dealImg from '../../assets/images/banner-08.jpg';
 const HomePage = () => {
     const sliderRef = useRef(null);
     const [isHovered, setIsHovered] = useState(false);
     const [currentSlide, setCurrentSlide] = useState(0);
     const [activeTab, setActiveTab] = useState('Best Seller');
-    const tabList = ['all','Best Seller' ,'Featured', 'Home page'];
+    const tabList = ['all', 'Best Seller', 'Featured', 'Home page'];
+    const [timer, setTimer] = useState({ days: 0, hours: 0, mins: 0, secs: 0 });
 
     const settings = {
         dots: true,
@@ -71,7 +75,6 @@ const HomePage = () => {
         sliderRef.current.slickPrev();
     };
 
-    // Sample product data with categories
     const products = [
         {
             id: 1,
@@ -116,8 +119,8 @@ const HomePage = () => {
             image: dressesImg,
             isSale: true,
             oldPrice: 30.00,
-            category: 'All',
-        }, 
+            category: 'Best Seller',
+        },
         {
             id: 6,
             name: 'Boxy2 T-Shirt with Roll Sleeve',
@@ -146,7 +149,7 @@ const HomePage = () => {
             category: 'Featured',
         }
     ];
-    const filters = [,
+    const products2 = [
         {   id: 9,
             name: 'Boxy T-Shirt with Roll Sleeve Detail',
             price: 20.00,
@@ -163,15 +166,7 @@ const HomePage = () => {
             oldPrice: null,
             category: 'Featured',
         },
-         {   id: 11,
-            name: 'Boxy T-Shirt with Roll Sleeve Detail',
-            price: 20.00,
-            image: Img3,
-            isSale: false,
-            oldPrice: null,
-            category: 'Featured',
-        },
-         {   id: 12,
+        {   id: 11,
             name: 'Boxy T-Shirt with Roll Sleeve Detail',
             price: 20.00,
             image: Img4,
@@ -179,7 +174,23 @@ const HomePage = () => {
             oldPrice: null,
             category: 'Featured',
         },
-         {   id: 13,
+        {   id: 12,
+            name: 'Boxy T-Shirt with Roll Sleeve Detail',
+            price: 20.00,
+            image: Img3,
+            isSale: false,
+            oldPrice: null,
+            category: 'Featured',
+        },
+        {   id: 13,
+            name: 'Boxy T-Shirt with Roll Sleeve Detail',
+            price: 20.00,
+            image: Img4,
+            isSale: false,
+            oldPrice: null,
+            category: 'Featured',
+        },
+        {   id: 14,
             name: 'Boxy T-Shirt with Roll Sleeve Detail',
             price: 20.00,
             image: Img5,
@@ -187,33 +198,52 @@ const HomePage = () => {
             oldPrice: null,
             category: 'Featured',
         },
-          {   id: 14,
+        {   id: 15,
             name: 'Boxy T-Shirt with Roll Sleeve Detail',
             price: 20.00,
             image: Img6,
-            isSale: false,
+            isSale: true,
             oldPrice: null,
-            category: 'Featured',
+            category: 'Best Seller',
         },
-         {   id: 15,
+         {   id: 16,
             name: 'Boxy T-Shirt with Roll Sleeve Detail',
             price: 20.00,
             image: Img7,
             isSale: false,
             oldPrice: null,
-            category: 'Featured',
-        },
-         {   id: 16,
-            name: 'Boxy T-Shirt with Roll Sleeve Detail',
-            price: 20.00,
-            image: Img8,
-            isSale: false,
-            oldPrice: null,
-            category: 'Featured',
-        },
-        ];
+            category: 'Best Seller',
+        }
+    ];
 
-    const filteredProducts = products.filter(p => p.category === activeTab);
+    const allProducts = [...products2];
+
+    const filteredProducts = activeTab.toLowerCase() === 'all'
+      ? allProducts
+      : allProducts.filter(
+          p => p.category && p.category.toLowerCase() === activeTab.toLowerCase()
+        );
+
+    // Set your target date here (e.g., 7 days from now)
+    const targetDate = new Date();
+    targetDate.setDate(targetDate.getDate() + 7);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            const now = new Date();
+            const diff = targetDate - now;
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                const mins = Math.floor((diff / (1000 * 60)) % 60);
+                const secs = Math.floor((diff / 1000) % 60);
+                setTimer({ days, hours, mins, secs });
+            } else {
+                setTimer({ days: 0, hours: 0, mins: 0, secs: 0 });
+            }
+        }, 1000);
+        return () => clearInterval(interval);
+    }, []);
 
     return (
         <div className='min-h-screen'>
@@ -313,7 +343,6 @@ const HomePage = () => {
                 </div>
             </div>
 
-            {/* Product Grid Section */}
             <div className="max-w-7xl mx-auto px-4 py-16">
                 <h2 className="text-2xl md:text-3xl font-bold text-center mb-6 font-montserrat uppercase tracking-wide">Our Products</h2>
                 {/* Tabs */}
@@ -332,8 +361,8 @@ const HomePage = () => {
                         </button>
                     ))}
                 </div>
-               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-    {filters.map(filters => (
+               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+    {filteredProducts.map(filters => (
         <div key={filters.id} className="bg-white flex flex-col items-start shadow-sm">
             <div className="relative w-full aspect-square overflow-hidden">
                 <img src={filters.image} alt={filters.name} className="absolute inset-0 h-full object-cover" />
@@ -360,6 +389,48 @@ const HomePage = () => {
     ))}
 </div>
 
+            </div>
+
+            {/* Lookbook + Deal Section */}
+            <div className="bg-gray-100 py-16">
+                <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+                    {/* Lookbook */}
+                    <div className="relative aspect-square flex items-center justify-center overflow-hidden bg-white">
+                        <img src={dealImg} alt="Lookbook" className="absolute inset-0 w-full h-full object-cover" />
+                        <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
+                            <span className="text-white text-2xl md:text-3xl font-montserrat font-semibold mb-2">The Beauty</span>
+                            <span className="text-white text-5xl md:text-6xl font-montserrat font-extrabold mb-4 tracking-wider">LOOKBOOK</span>
+                            <span className="text-white text-lg font-montserrat tracking-widest mt-2">VIEW COLLECTION</span>
+                        </div>
+                    </div>
+                    {/* Deal Product */}
+                    <div className="flex flex-col items-center justify-center bg-white aspect-square p-8">
+                        <img src={sunglassesImg2} alt="Deal Product" className="w-2/3 h-2/3 object-cover mb-6" />
+                        <div className="text-center">
+                            <div className="font-montserrat text-lg text-gray-700 mb-2">Boxy2 T-Shirt with Roll Sleeve</div>
+                            <div className="font-montserrat text-2xl font-bold text-gray-800 mb-6">$20.00</div>
+                            {/* Countdown Timer */}
+                            <div className="flex justify-center gap-3 mt-4">
+                                <div className="flex flex-col items-center bg-white border px-6 py-2">
+                                    <span className="text-xl font-bold text-gray-700">{timer.days}</span>
+                                    <span className="text-gray-400 text-xs mt-1">days</span>
+                                </div>
+                                <div className="flex flex-col items-center bg-white border px-6 py-2">
+                                    <span className="text-xl font-bold text-gray-700">{timer.hours}</span>
+                                    <span className="text-gray-400 text-xs mt-1">hrs</span>
+                                </div>
+                                <div className="flex flex-col items-center bg-white border px-6 py-2">
+                                    <span className="text-xl font-bold text-gray-700">{timer.mins}</span>
+                                    <span className="text-gray-400 text-xs mt-1">mins</span>
+                                </div>
+                                <div className="flex flex-col items-center bg-white border px-6 py-2">
+                                    <span className="text-xl font-bold text-gray-700">{timer.secs}</span>
+                                    <span className="text-gray-400 text-xs mt-1">secs</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );
