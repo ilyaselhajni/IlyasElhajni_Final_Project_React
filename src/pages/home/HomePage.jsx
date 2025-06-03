@@ -11,11 +11,14 @@ import bagsImg from '../../assets/images/cards3.webp';
 import sunglassesImg from '../../assets/images/cards4.webp';
 import footwearImg from '../../assets/images/cards5.webp';
 import accessoriesImg from '../../assets/images/cards6.webp';
+import Img from '../../assets/images/shopy7.webp';
 
 const HomePage = () => {
     const sliderRef = useRef(null);
     const [isHovered, setIsHovered] = useState(false);
     const [currentSlide, setCurrentSlide] = useState(0);
+    const [activeTab, setActiveTab] = useState('Best Seller');
+    const tabList = ['Best Seller', 'Featured', 'Home page'];
 
     const settings = {
         dots: true,
@@ -62,10 +65,96 @@ const HomePage = () => {
         sliderRef.current.slickPrev();
     };
 
+    // Sample product data with categories
+    const products = [
+        {
+            id: 1,
+            name: 'Boxy7 T-Shirt with Roll Sleeve',
+            price: 20.00,
+            image: dressesImg,
+            isSale: false,
+            oldPrice: null,
+            category: 'Best Seller',
+        },
+        {
+            id: 2,
+            name: 'Boxy6 T-Shirt with Roll Sleeve',
+            price: 20.00,
+            image: watchesImg,
+            isSale: false,
+            oldPrice: null,
+            category: 'Best Seller',
+        },
+        {
+            id: 3,
+            name: 'Boxy5 T-Shirt with Roll Sleeve',
+            price: 20.00,
+            image: bagsImg,
+            isSale: false,
+            oldPrice: null,
+            category: 'Featured',
+        },
+        {
+            id: 4,
+            name: 'Boxy4 T-Shirt with Roll Sleeve',
+            price: 20.00,
+            image: sunglassesImg,
+            isSale: false,
+            oldPrice: null,
+            category: 'Home page',
+        },
+        {
+            id: 5,
+            name: 'Boxy3 T-Shirt with Roll Sleeve',
+            price: 20.00,
+            image: dressesImg,
+            isSale: true,
+            oldPrice: 30.00,
+            category: 'Best Seller',
+        },
+        {
+            id: 6,
+            name: 'Boxy2 T-Shirt with Roll Sleeve',
+            price: 20.00,
+            image: watchesImg,
+            isSale: false,
+            oldPrice: null,
+            category: 'Featured',
+        },
+        {
+            id: 7,
+            name: 'Boxy1 T-Shirt with Roll Sleeve',
+            price: 20.00,
+            image: bagsImg,
+            isSale: false,
+            oldPrice: null,
+            category: 'Home page',
+        },
+        {
+            id: 8,
+            name: 'Boxy T-Shirt with Roll Sleeve Detail',
+            price: 20.00,
+            image: sunglassesImg,
+            isSale: false,
+            oldPrice: null,
+            category: 'Featured',
+        },
+        {   id: 9,
+            name: 'Boxy T-Shirt with Roll Sleeve Detail',
+            price: 20.00,
+            image: Img,
+            isSale: false,
+            oldPrice: null,
+            category: 'Featured',
+        }
+    ];
+
+    const filteredProducts = products.filter(p => p.category === activeTab);
+
     return (
         <div className='min-h-screen'>
             <div 
-                className='w-full p-0 m-0 relative'
+                className=' p-0 m-0 relative'
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
             >
@@ -73,7 +162,7 @@ const HomePage = () => {
                     {slides.map((slide, idx) => (
                         <div key={slide.id} className='relative'>
                             <div 
-                                className='w-full h-[600px] relative'
+                                className=' h-[600px] relative'
                                 style={{
                                     backgroundImage: `url(${slide.image})`,
                                     backgroundSize: 'cover',
@@ -82,9 +171,9 @@ const HomePage = () => {
                                 }}
                             >
                                 <div key={currentSlide} className='absolute inset-0 flex flex-col items-center justify-center text-white bg-black/30'>
-                                    <h2 className='text-xl size-18 mb-4 animate-fade-in-up'>{slide.title}</h2>
-                                    <p className='text-6xl mb-8 font-extrabold animate-fade-in-up animation-delay-00'>{slide.description}</p>
-                                    <button className='px-8 py-3 bg-white text-black hover:bg-[#E65641] hover:text-white rounded-full transition-colors duration-100 animate-fade-in-up animation-delay-00'>
+                                    <h2 className='text-xl size-18 mb-4 '>{slide.title}</h2>
+                                    <p className='text-6xl mb-8 font-extrabold  '>{slide.description}</p>
+                                    <button className='px-8 py-3 bg-white text-black hover:bg-[#E65641] hover:text-white rounded-full transition-colors duration-100 '>
                                         {slide.buttonText}
                                     </button>
                                 </div>
@@ -115,32 +204,92 @@ const HomePage = () => {
                 </button>
             </div>
 
-            <div className="max-w-6xl mx-auto px-4 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div className="bg-white flex flex-col items-center justify-end relative shadow-sm">
-                    <img src={dressesImg} alt="Dresses" className="w-full  object-cover" />
-                    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-white px-8 py-3 text-center shadow-md text-gray-800 font-medium text-lg tracking-wide">DRESSES</div>
+            <div className="max-w-6xl mx-auto px-10 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+                {/* Dresses */}
+                <div className="relative bg-white aspect-square flex items-end justify-center overflow-hidden">
+                    <img src={dressesImg} alt="Dresses" className="absolute inset-0   object-cover" />
+                    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-white px-10 py-3 text-center shadow text-gray-800 font-montserrat font-medium text-base tracking-wide uppercase">
+                        Dresses
+                    </div>
                 </div>
-                <div className="bg-gray-50 flex flex-col items-center justify-end relative shadow-sm">
-                    <img src={watchesImg} alt="Watches" className="w-full  object-contain p-8" />
-                    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-white px-8 py-3 text-center shadow-md text-gray-800 font-medium text-lg tracking-wide">WATCHES</div>
+                {/* Watches */}
+                <div className="relative aspect-square flex items-end justify-center overflow-hidden">
+                    <img src={watchesImg} alt="Watches" className="absolute inset-0   object-contain  " />
+                    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-white px-10 py-3 text-center shadow text-gray-800 font-montserrat font-medium text-base tracking-wide uppercase">
+                        Watches
+                    </div>
                 </div>
-                <div className="bg-white flex flex-col items-center justify-end relative shadow-sm">
-                    <img src={bagsImg} alt="Bags" className="w-full object-cover" />
-                    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-white px-8 py-3 text-center shadow-md text-gray-800 font-medium text-lg tracking-wide">BAGS</div>
+                {/* Bags */}
+                <div className="relative bg-white aspect-square flex items-end justify-center overflow-hidden">
+                    <img src={bagsImg} alt="Bags" className="absolute inset-0   object-cover" />
+                    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-white px-10 py-3 text-center shadow text-gray-800 font-montserrat font-medium text-base tracking-wide uppercase">
+                        Bags
+                    </div>
                 </div>
-                <div className="bg-white flex flex-col items-center justify-end relative shadow-sm">
-                    <img src={sunglassesImg} alt="Sunglasses" className="w-full  object-contain p-8" />
-                    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-white px-8 py-3 text-center shadow-md text-gray-800 font-medium text-lg tracking-wide">SUNGLASSES</div>
+                {/* Sunglasses */}
+                <div className="relative aspect-square flex items-end justify-center overflow-hidden">
+                    <img src={sunglassesImg} alt="Sunglasses" className="absolute inset-0   object-contain py-5 " />
+                    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-white px-10 py-3 text-center shadow text-gray-800 font-montserrat font-medium text-base tracking-wide uppercase">
+                        Sunglasses
+                    </div>
                 </div>
-                <div className="bg-white flex flex-col items-center justify-end relative shadow-sm">
-                    <img src={footwearImg} alt="Footwear" className="w-full object-cover" />
-                    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-white px-8 py-3 text-center shadow-md text-gray-800 font-medium text-lg tracking-wide">FOOTERWEAR</div>
+                {/* Footwear */}
+                <div className="relative bg-white aspect-square flex items-end justify-center overflow-hidden">
+                    <img src={footwearImg} alt="Footwear" className="absolute inset-0   object-cover  " />
+                    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-white px-10 py-3 text-center shadow text-gray-800 font-montserrat font-medium text-base tracking-wide uppercase">
+                        Footwear
+                    </div>
                 </div>
-                <div className="bg-white flex flex-col items-center justify-end relative shadow-sm">
-                    <img src={accessoriesImg} alt="Accessories" className="w-full  object-contain p-8" />
-                    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-white px-8 py-3 text-center shadow-md text-gray-800 font-medium text-lg tracking-wide">ACCESSORIES</div>
-                </div>  
-            </div>   
+                {/* Accessories */}
+                <div className="relative =aspect-square flex items-end justify-center overflow-hidden">
+                    <img src={accessoriesImg} alt="Accessories" className="absolute inset-0   object-cover py-5" />
+                    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-white px-10 py-3 text-center shadow text-gray-800 font-montserrat font-medium text-base tracking-wide uppercase">
+                        Accessories
+                    </div>
+                </div>
+            </div>
+
+            {/* Product Grid Section */}
+            <div className="max-w-7xl mx-auto px-4 py-16">
+                <h2 className="text-2xl md:text-3xl font-bold text-center mb-6 font-montserrat uppercase tracking-wide">Our Products</h2>
+                {/* Tabs */}
+                <div className="flex justify-center gap-8 mb-10 font-montserrat text-base font-medium">
+                    {tabList.map(tab => (
+                        <button
+                            key={tab}
+                            onClick={() => setActiveTab(tab)}
+                            className={
+                                activeTab === tab
+                                    ? 'text-[#E65641] border-b-2 border-[#E65641] pb-1'
+                                    : 'text-gray-500 hover:text-[#E65641] pb-1'
+                            }
+                        >
+                            {tab}
+                        </button>
+                    ))}
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                    {filteredProducts.map(product => (
+                        <div key={product.id} className="bg-white flex flex-col items-start shadow-sm">
+                            <div className="relative w-full aspect-square overflow-hidden">
+                                <img src={product.image} alt={product.name} className="absolute inset-0 w-full h-full object-cover" />
+                                {product.isSale && (
+                                    <span className="absolute top-3 left-3 bg-[#E65641] text-white text-xs font-bold px-3 py-1 rounded-full font-montserrat">Sale</span>
+                                )}
+                            </div>
+                            <div className="p-4 w-full">
+                                <div className="font-montserrat text-sm text-gray-800 mb-1">{product.name}</div>
+                                <div className="flex items-center gap-2">
+                                    {product.isSale && (
+                                        <span className="text-gray-400 line-through text-xs font-montserrat">${product.oldPrice.toFixed(2)}</span>
+                                    )}
+                                    <span className={`text-base font-bold font-montserrat ${product.isSale ? 'text-[#E65641]' : 'text-gray-800'}`}>${product.price.toFixed(2)}</span>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
         </div>
     );
 };
