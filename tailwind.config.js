@@ -28,7 +28,10 @@ export default {
         '.animation-delay-400': {
           'animation-delay': '400ms',
         }
-      }
+      },
+      fontFamily: {
+        montserrat: ['Montserrat', 'sans-serif'],
+      },
     },
   },
   plugins: [],

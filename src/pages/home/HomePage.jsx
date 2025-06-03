@@ -5,10 +5,17 @@ import "slick-carousel/slick/slick-theme.css";
 import carousell1 from '../../assets/images/carousel1.jpg'
 import carousell2 from '../../assets/images/carousel2.jpg'
 import carousell3 from '../../assets/images/carousel3.webp'
+import dressesImg from '../../assets/images/cards1.webp';
+import watchesImg from '../../assets/images/cards2.webp';
+import bagsImg from '../../assets/images/cards3.webp';
+import sunglassesImg from '../../assets/images/cards4.webp';
+import footwearImg from '../../assets/images/cards5.webp';
+import accessoriesImg from '../../assets/images/cards6.webp';
 
 const HomePage = () => {
     const sliderRef = useRef(null);
     const [isHovered, setIsHovered] = useState(false);
+    const [currentSlide, setCurrentSlide] = useState(0);
 
     const settings = {
         dots: true,
@@ -20,6 +27,7 @@ const HomePage = () => {
         autoplaySpeed: 3000,
         arrows: false,
         fade: true,
+        afterChange: (index) => setCurrentSlide(index),
     };
 
     const slides = [
@@ -62,7 +70,7 @@ const HomePage = () => {
                 onMouseLeave={() => setIsHovered(false)}
             >
                 <Slider ref={sliderRef} {...settings}>
-                    {slides.map((slide) => (
+                    {slides.map((slide, idx) => (
                         <div key={slide.id} className='relative'>
                             <div 
                                 className='w-full h-[600px] relative'
@@ -73,10 +81,10 @@ const HomePage = () => {
                                     backgroundRepeat: 'no-repeat'
                                 }}
                             >
-                                <div className='absolute inset-0 flex flex-col items-center justify-center text-white bg-black/30'>
-                                    <h2 className='text-4xl font-bold mb-4 animate-fade-in-up'>{slide.title}</h2>
-                                    <p className='text-xl mb-8 animate-fade-in-up animation-delay-200'>{slide.description}</p>
-                                    <button className='px-8 py-3 bg-white text-black hover:bg-[#E65641] hover:text-white rounded-full transition-colors duration-300 animate-fade-in-up animation-delay-400'>
+                                <div key={currentSlide} className='absolute inset-0 flex flex-col items-center justify-center text-white bg-black/30'>
+                                    <h2 className='text-xl size-18 mb-4 animate-fade-in-up'>{slide.title}</h2>
+                                    <p className='text-6xl mb-8 font-extrabold animate-fade-in-up animation-delay-00'>{slide.description}</p>
+                                    <button className='px-8 py-3 bg-white text-black hover:bg-[#E65641] hover:text-white rounded-full transition-colors duration-100 animate-fade-in-up animation-delay-00'>
                                         {slide.buttonText}
                                     </button>
                                 </div>
@@ -105,6 +113,33 @@ const HomePage = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                     </svg>
                 </button>
+            </div>
+
+            <div className="max-w-6xl mx-auto px-4 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="bg-white flex flex-col items-center justify-end relative shadow-sm">
+                    <img src={dressesImg} alt="Dresses" className="w-full  object-cover" />
+                    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-white px-8 py-3 text-center shadow-md text-gray-800 font-medium text-lg tracking-wide">DRESSES</div>
+                </div>
+                <div className="bg-gray-50 flex flex-col items-center justify-end relative shadow-sm">
+                    <img src={watchesImg} alt="Watches" className="w-full  object-contain p-8" />
+                    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-white px-8 py-3 text-center shadow-md text-gray-800 font-medium text-lg tracking-wide">WATCHES</div>
+                </div>
+                <div className="bg-white flex flex-col items-center justify-end relative shadow-sm">
+                    <img src={bagsImg} alt="Bags" className="w-full object-cover" />
+                    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-white px-8 py-3 text-center shadow-md text-gray-800 font-medium text-lg tracking-wide">BAGS</div>
+                </div>
+                <div className="bg-white flex flex-col items-center justify-end relative shadow-sm">
+                    <img src={sunglassesImg} alt="Sunglasses" className="w-full  object-contain p-8" />
+                    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-white px-8 py-3 text-center shadow-md text-gray-800 font-medium text-lg tracking-wide">SUNGLASSES</div>
+                </div>
+                <div className="bg-white flex flex-col items-center justify-end relative shadow-sm">
+                    <img src={footwearImg} alt="Footwear" className="w-full object-cover" />
+                    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-white px-8 py-3 text-center shadow-md text-gray-800 font-medium text-lg tracking-wide">FOOTERWEAR</div>
+                </div>
+                <div className="bg-white flex flex-col items-center justify-end relative shadow-sm">
+                    <img src={accessoriesImg} alt="Accessories" className="w-full  object-contain p-8" />
+                    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-white px-8 py-3 text-center shadow-md text-gray-800 font-medium text-lg tracking-wide">ACCESSORIES</div>
+                </div>
             </div>
         </div>
     );
