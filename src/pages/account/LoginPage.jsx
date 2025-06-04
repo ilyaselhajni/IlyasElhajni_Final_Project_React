@@ -34,15 +34,13 @@ const LoginPage = () => {
       };
 
       await emailjs.send(
-        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
-        'template_karr1jg', // Your template ID
-        templateParams,
-        'YOUR_PUBLIC_KEY' // Replace with your public key
+        'service_8kflwor', 
+        'template_karr1jg',   templateParams,
+        'arSTs6ZW9lXvE954a' 
       );
 
       setSuccess('Login successful! Check your email for confirmation.');
-      // Here you would typically handle the actual login logic
-      // For example, setting user state, redirecting, etc.
+     
     } catch (error) {
       setError('Login failed. Please try again.');
       console.error('Error:', error);
@@ -69,16 +67,15 @@ const LoginPage = () => {
       };
 
       await emailjs.send(
-        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
-        'template_karr1jg', // Your template ID
+        'service_8kflwor', 
+        'template_karr1jg', 
         templateParams,
-        'YOUR_PUBLIC_KEY' // Replace with your public key
+        'arSTs6ZW9lXvE954a'
       );
 
       setSuccess('Account created successfully! Check your email for confirmation.');
       setShowSignup(false);
-      // Here you would typically handle the actual signup logic
-      // For example, creating user account, setting user state, etc.
+     
     } catch (error) {
       setError('Signup failed. Please try again.');
       console.error('Error:', error);
