@@ -1,9 +1,10 @@
 import React from 'react';
 import dressesImg from '../../assets/images/shopi2.webp';
 import watchesImg from '../../assets/images/shopy3.webp';
-import bagsImg from '../../assets/images/shopy4.webp';
+import bagsImg from '../../assets/images/blog-01.jpg';
 import sunglassesImg from '../../assets/images/shopy5.webp';
 import Footer from '../../components/Footer';
+import { NavLink } from 'react-router-dom';
 
 const featuredProducts = [
   { id: 1, name: 'Boxy7 T-Shirt with Roll Sleeve', price: 20.00, image: dressesImg },

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import logo from '../assets/images/logo.png.webp' 
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 const socialIcons = [
   { icon: "fab fa-facebook-f", url: "#" },
@@ -27,6 +27,11 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const navLinkClass = ({ isActive }) =>
+    isActive
+      ? "text-red-500 border-b-2 border-red-500 px-2"
+      : "hover:text-red-500 px-2";
 
   return (
     <header className="p-0 m-0">
@@ -66,13 +71,15 @@ export default function Navbar() {
           <i className="fas fa-bars"></i>
         </button>
         <ul className="hidden lg:flex gap-8 text-lg font-medium">
-          <a href="/">          <li  className="text-red-500">Home</li></a>
-          <a href="/shop"><li className="hover:text-red-500 cursor-pointer">Shop</li></a>
-          <li className="hover:text-red-500 cursor-pointer">Sale</li>
-          <li className="hover:text-red-500 cursor-pointer">Features</li>
-          <a href="/blog"><li className="hover:text-red-500 cursor-pointer">Blog</li></a>
-          <a href="/about"><li className="hover:text-red-500 cursor-pointer">About</li></a>
-          <a href="/contact"><li className="hover:text-red-500 cursor-pointer">Contact</li></a>
+          <NavLink to="/" className={navLinkClass}><li>Home</li></NavLink>
+          <NavLink to="/shop" className={navLinkClass}><li>Shop</li></NavLink>
+                    <NavLink to="" ><li>sale</li></NavLink>
+                              <NavLink to=""><li>Features</li></NavLink>
+
+          <NavLink to="/blog" className={navLinkClass}><li>Blog</li></NavLink>
+          <NavLink to="/about" className={navLinkClass}><li>About</li></NavLink>
+          <NavLink to="/contact" className={navLinkClass}><li>Contact</li></NavLink>
+    
         </ul>
         <div className="hidden lg:flex items-center gap-6">
           <Link to="/account">
@@ -121,13 +128,11 @@ export default function Navbar() {
             </div>
           </div>
           <ul className="flex flex-col gap-2 px-0 py-4 text-lg font-medium bg-[#E65641] text-white">
-            <li className="px-6 py-3 flex justify-between items-center border-b border-[#e97a6a]">Home <i className="fas fa-chevron-right"></i></li>
-            <li className="px-6 py-3 border-b border-[#e97a6a]">Shop</li>
-            <li className="px-6 py-3 border-b border-[#e97a6a]">Sale</li>
-            <li className="px-6 py-3 border-b border-[#e97a6a]">Features</li>
-            <li className="px-6 py-3 border-b border-[#e97a6a]">Blog</li>
-            <li className="px-6 py-3 border-b border-[#e97a6a]">About</li>
-            <li className="px-6 py-3">Contact</li>
+            <NavLink to="/" className={navLinkClass}><li>Home</li></NavLink>
+            <NavLink to="/shop" className={navLinkClass}><li>Shop</li></NavLink>
+            <NavLink to="/about" className={navLinkClass}><li>About</li></NavLink>
+            <NavLink to="/contact" className={navLinkClass}><li>Contact</li></NavLink>
+            <NavLink to="/blog" className={navLinkClass}><li>Blog</li></NavLink>
           </ul>
           <div className="flex items-center gap-6 px-6 py-4 border-t">
             <Link to="/account">
