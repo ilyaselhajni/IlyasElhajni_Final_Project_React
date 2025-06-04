@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useCart } from '../../context/CartContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import dressesImg from '../../assets/images/shopi2.webp';
 import watchesImg from '../../assets/images/shopy3.webp';
 import bagsImg from '../../assets/images/shopy4.webp';
@@ -201,36 +201,38 @@ const ShopPage = () => {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {paginated.map(product => (
-            <div key={product.id} className="relative group bg-white p-2 flex flex-col items-center">
-              <div className="relative w-full aspect-[3/4] overflow-hidden flex items-center justify-center">
-                <figure className="hover01 w-full h-full">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-full object-cover rounded"
-                  />
-                </figure>
-                {product.isSale && (
-                  <span className="absolute top-2 left-2 bg-[#E65641] text-white text-xs font-bold px-2 py-1 rounded-full font-montserrat">Sale</span>
-                )}
-                <button
-                  onClick={() => { addToCart(product); navigate('/cart'); }}
-                  className="absolute left-1/2 bottom-4 -translate-x-1/2 translate-y-6 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 bg-black text-white px-6 py-2 rounded-full font-montserrat text-sm font-semibold transition-all duration-300 shadow-lg hover:bg-[#E65641]"
-                  style={{ pointerEvents: 'auto' }}
-                >
-                  ADD TO CART
-                </button>
-              </div>
-              <div className="mt-3 w-full text-center">
-                <div className="font-montserrat text-sm font-semibold mb-1">{product.name}</div>
-                <div className="font-montserrat text-base font-bold">
-                  {product.isSale && product.oldPrice && (
-                    <span className="text-gray-400 line-through text-xs mr-2">${product.oldPrice.toFixed(2)}</span>
+            <Link key={product.id} to={`/product/${product.id}`} className="w-full">
+              <div className="relative group bg-white p-2 flex flex-col items-center">
+                <div className="relative w-full aspect-[3/4] overflow-hidden flex items-center justify-center">
+                  <figure className="hover01 w-full h-full">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-full object-cover rounded"
+                    />
+                  </figure>
+                  {product.isSale && (
+                    <span className="absolute top-2 left-2 bg-[#E65641] text-white text-xs font-bold px-2 py-1 rounded-full font-montserrat">Sale</span>
                   )}
-                  <span className={product.isSale ? 'text-[#E65641]' : 'text-gray-800'}>${product.price.toFixed(2)}</span>
+                  <button
+                    onClick={e => { e.preventDefault(); addToCart(product); navigate('/cart'); }}
+                    className="absolute left-1/2 bottom-4 -translate-x-1/2 translate-y-6 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 bg-black text-white px-6 py-2 rounded-full font-montserrat text-sm font-semibold transition-all duration-300 shadow-lg hover:bg-[#E65641]"
+                    style={{ pointerEvents: 'auto' }}
+                  >
+                    ADD TO CART
+                  </button>
+                </div>
+                <div className="mt-3 w-full text-center">
+                  <div className="font-montserrat text-sm font-semibold mb-1">{product.name}</div>
+                  <div className="font-montserrat text-base font-bold">
+                    {product.isSale && product.oldPrice && (
+                      <span className="text-gray-400 line-through text-xs mr-2">${product.oldPrice.toFixed(2)}</span>
+                    )}
+                    <span className={product.isSale ? 'text-[#E65641]' : 'text-gray-800'}>${product.price.toFixed(2)}</span>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
      
