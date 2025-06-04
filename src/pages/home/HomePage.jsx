@@ -233,7 +233,6 @@ const HomePage = () => {
           p => p.category && p.category.toLowerCase() === activeTab.toLowerCase()
         );
 
-    // Set your target date here (e.g., 7 days from now)
     const targetDate = new Date();
     targetDate.setDate(targetDate.getDate() + 7);
 
@@ -256,7 +255,6 @@ const HomePage = () => {
 
     return (
         <div className='min-h-screen'>
-            {/* Carousel Section */}
             <div 
                 className='p-0 m-0 relative'
                 onMouseEnter={() => setIsHovered(true)}
@@ -308,9 +306,7 @@ const HomePage = () => {
                 </button>
             </div>
 
-            {/* Category Cards Section */}
             <div className="max-w-6xl mx-auto px-4 sm:px-10 py-8 sm:py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-10">
-                {/* Reusable Category Card Component */}
                 <div className="relative bg-white aspect-square flex items-end justify-center overflow-hidden">
                     <img src={dressesImg} alt="Dresses" className="absolute inset-0 w-full h-full object-cover" />
                     <div className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 bg-white px-5 sm:px-10 py-2 sm:py-3 text-center shadow text-gray-800 font-montserrat font-medium text-sm sm:text-base tracking-wide uppercase">
@@ -354,11 +350,9 @@ const HomePage = () => {
                 </div>
             </div>
 
-            {/* Product Listing Section */}
             <div className="max-w-7xl mx-auto px-4 py-8 sm:py-16">
                 <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-4 sm:mb-6 font-montserrat uppercase tracking-wide">FEATURED PRODUCTS
 </h2>
-                {/* Tabs */}
                 <div className="flex justify-center gap-4 sm:gap-8 mb-6 sm:mb-10 font-montserrat text-sm sm:text-base font-medium">
                     {tabList.map(tab => (
                         <button
@@ -374,10 +368,9 @@ const HomePage = () => {
                         </button>
                     ))}
                 </div>
-                {/* Product Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3">
                     {filteredProducts.map(filters => (
-                        <div key={filters.id} className="bg-white flex flex-col items-start shadow-sm group relative">
+                        <div key={filters.id} className="bg-white flex flex-col items-start  shadow-sm group relative">
                             <div className="relative w-full aspect-square overflow-hidden">
                                 <img src={filters.image} alt={filters.name} className="absolute inset-0 w-full h-full object-cover" />
                                 {filters.isSale && (
@@ -385,13 +378,12 @@ const HomePage = () => {
                                         Sale
                                     </span>
                                 )}
-                                {/* Add to cart button overlay - bottom center, slide up on hover */}
                                 <button
                                     onClick={() => {
                                         addToCart(filters);
                                         navigate('/cart');
                                     }}
-                                    className="absolute left-1/2 bottom-4 -translate-x-1/2 translate-y-6 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 bg-black text-white px-6 py-2 rounded-full font-montserrat text-sm font-semibold transition-all duration-300 shadow-lg hover:bg-[#E65641]"
+                                    className="absolute left-1/2 bottom-4  -translate-x-1/2 translate-y-6 opacity-0  group-hover:translate-y-0 group-hover:opacity-100 bg-black text-white px-6 py-2 rounded-full font-montserrat text-sm font-semibold transition-all duration-300 shadow-lg hover:bg-[#E65641]"
                                     style={{ pointerEvents: 'auto' }}
                                 >
                                     Add to cart
@@ -427,13 +419,11 @@ const HomePage = () => {
                             <span className="text-white text-sm md:text-lg font-montserrat tracking-widest mt-1 sm:mt-2">VIEW COLLECTION</span>
                         </div>
                     </div>
-                    {/* Deal Product */}
                     <div className="flex flex-col items-center justify-center bg-white aspect-square p-4 sm:p-8">
                         <img src={sunglassesImg2} alt="Deal Product" className="w-2/3 h-2/3 object-cover mb-3 sm:mb-6" />
                         <div className="text-center">
                             <div className="font-montserrat text-sm md:text-lg text-gray-700 mb-1 sm:mb-2">Boxy2 T-Shirt with Roll Sleeve</div>
                             <div className="font-montserrat text-lg md:text-2xl font-bold text-gray-800 mb-3 sm:mb-6">$20.00</div>
-                            {/* Countdown Timer */}
                             <div className="flex justify-center gap-2 sm:gap-3 mt-2 sm:mt-4">
                                 <div className="flex flex-col items-center bg-white border px-3 sm:px-6 py-1 sm:py-2">
                                     <span className="text-lg font-bold text-gray-700">{timer.days}</span>
@@ -457,25 +447,21 @@ const HomePage = () => {
                 </div>
             </div>
 
-            {/* Blog Section */}
             <div className="max-w-7xl mx-auto px-4 sm:px-10 py-8 sm:py-16">
                 <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-12 font-montserrat uppercase tracking-wide">Our Blog</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-10">
-                    {/* Blog Card 1 */}
                     <div className="bg-white flex flex-col items-start">
                         <img src={blogImg1} alt="Blog 1" className="w-full aspect-square object-cover mb-3 sm:mb-6" />
                         <div className="font-montserrat text-base sm:text-lg font-semibold text-gray-900 mb-1 sm:mb-2">Black Friday Guide: Best Sales & Discount Codes</div>
                         <div className="text-gray-500 text-sm mb-2 sm:mb-4">by fashe-theme Admin on Dec 28,2017</div>
                         <div className="text-gray-500 text-xs sm:text-base leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sed turpis sed lorem dignissim vulputate nec cursus ante. Nunc sit...</div>
                     </div>
-                    {/* Blog Card 2 */}
                     <div className="bg-white flex flex-col items-start">
                         <img src={blogImg2} alt="Blog 2" className="w-full aspect-square object-cover mb-3 sm:mb-6" />
                         <div className="font-montserrat text-base sm:text-lg font-semibold text-gray-900 mb-1 sm:mb-2">The White Sneakers Nearly Every Fashion Girls Own</div>
                         <div className="text-gray-500 text-sm mb-2 sm:mb-4">by fashe-theme Admin on Dec 28,2017</div>
                         <div className="text-gray-500 text-xs sm:text-base leading-relaxed">Duis ut velit gravida nibh bibendum commodo. Suspendisse pellentesque mattis augue id euismod. Interdum et...</div>
                     </div>
-                    {/* Blog Card 3 */}
                     <div className="bg-white flex flex-col items-start">
                         <img src={blogImg3} alt="Blog 3" className="w-full aspect-square object-cover mb-3 sm:mb-6" />
                         <div className="font-montserrat text-base sm:text-lg font-semibold text-gray-900 mb-1 sm:mb-2">New York SS 2018 Street Style: By Annina Mislin</div>
@@ -490,7 +476,7 @@ const HomePage = () => {
                 <div className='flex flex-col sm:flex-row gap-4 justify-center'>
                     <div className='flex-col flex border-e-2 p-4 sm:p-10'>
                         Free Delivery Worldwide
-                        <span className='font-extralight text-sm'>Mirum est notare quam littera gothica</span>
+                        <span className='font-extralight text-sm'>Mirum est notare qua littera gothica</span>
                     </div>
                     <div className='flex-col flex border-e-2 p-4 sm:p-10'>
                         Free Delivery Worldwide
@@ -498,7 +484,7 @@ const HomePage = () => {
                     </div>
                     <div className='flex-col flex p-4 sm:p-10'>
                         Free Delivery Worldwide
-                        <span className='font-extralight text-sm'>Mirum est notare quam littera gothica</span>
+                        <span className='font-extralight text-sm'>Mirum est notare quamm littera gothica</span>
                     </div>
                 </div>
             </div>

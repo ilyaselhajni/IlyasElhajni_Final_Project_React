@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import logo from '../assets/images/logo.png.webp' 
+import { Link } from 'react-router-dom';
 
 const socialIcons = [
   { icon: "fab fa-facebook-f", url: "#" },
@@ -79,7 +80,9 @@ export default function Navbar() {
         </ul>
         {/* User/Cart (desktop) */}
         <div className="hidden lg:flex items-center gap-6">
-          <i className="fas fa-user-circle text-2xl text-gray-400"></i>
+          <Link to="/account">
+            <i className="fas fa-user-circle text-2xl text-gray-400"></i>
+          </Link>
           <div className="border-l h-6"></div>
           <div className="relative">
             <i className="fas fa-shopping-bag text-2xl text-gray-400"></i>
@@ -137,7 +140,9 @@ export default function Navbar() {
           </ul>
           {/* User/Cart (mobile) */}
           <div className="flex items-center gap-6 px-6 py-4 border-t">
-            <i className="fas fa-user-circle text-2xl text-gray-400"></i>
+            <Link to="/account">
+              <i className="fas fa-user-circle text-2xl text-gray-400"></i>
+            </Link>
             <div className="border-l h-6"></div>
             <div className="relative">
               <i className="fas fa-shopping-bag text-2xl text-gray-400"></i>

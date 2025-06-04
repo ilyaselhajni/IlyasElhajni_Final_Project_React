@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useCart } from '../../context/CartContext';
 import { useNavigate } from 'react-router-dom';
-import dressesImg from '../../assets/images/cards1.webp';
-import watchesImg from '../../assets/images/cards2.webp';
-import bagsImg from '../../assets/images/cards3.webp';
-import sunglassesImg from '../../assets/images/cards4.webp';
+import dressesImg from '../../assets/images/shopi2.webp';
+import watchesImg from '../../assets/images/shopy3.webp';
+import bagsImg from '../../assets/images/shopy4.webp';
+import sunglassesImg from '../../assets/images/shopy5.webp';
 import Footer from '../../components/Footer';
 
 const allProducts = [
@@ -123,7 +123,6 @@ const ShopPage = () => {
   const [perPage, setPerPage] = useState(10);
   const [page, setPage] = useState(1);
 
-  // Filtering logic
   let filtered = allProducts.filter(p =>
     (!selectedCategory || p.category === selectedCategory) &&
     (selectedColors.length === 0 || selectedColors.includes(p.color)) &&
@@ -140,7 +139,6 @@ const ShopPage = () => {
   return (
     <>
     <div className="flex max-w-7xl mx-auto py-10 px-2 sm:px-6 gap-8">
-      {/* Sidebar */}
       <aside className="w-64 hidden md:block">
         <div className="font-bold mb-4">Categories</div>
         <ul className="mb-6 space-y-1">
@@ -187,7 +185,6 @@ const ShopPage = () => {
           <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search..." className="w-full border px-3 py-2 rounded text-sm" />
         </div>
       </aside>
-      {/* Main Content */}
       <main className="flex-1">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">
           <div className="flex gap-2">
