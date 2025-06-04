@@ -203,7 +203,13 @@ const ShopPage = () => {
           {paginated.map(product => (
             <div key={product.id} className="relative group bg-white p-2 flex flex-col items-center">
               <div className="relative w-full aspect-[3/4] overflow-hidden flex items-center justify-center">
-                <img src={product.image} alt={product.name} className="w-full h-full object-cover rounded" />
+                <figure className="hover01 w-full h-full">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-full object-cover rounded"
+                  />
+                </figure>
                 {product.isSale && (
                   <span className="absolute top-2 left-2 bg-[#E65641] text-white text-xs font-bold px-2 py-1 rounded-full font-montserrat">Sale</span>
                 )}

@@ -17,7 +17,9 @@ const CartPage = () => {
           <ul className="divide-y">
             {cart.map(item => (
               <li key={item.id} className="flex items-center py-4">
-                <img src={item.image} alt={item.name} className="w-20 h-20 object-cover rounded mr-4" />
+                <figure className="hover01 w-20 h-20 mr-4">
+                  <img src={item.image} alt={item.name} className="w-20 h-20 object-cover rounded" />
+                </figure>
                 <div className="flex-1">
                   <div className="font-semibold">{item.name}</div>
                   <div>Qty: {item.qty}</div>
@@ -28,7 +30,12 @@ const CartPage = () => {
             ))}
           </ul>
           <div className="text-right mt-6 text-xl font-bold">Total: ${total.toFixed(2)}</div>
-          <button onClick={clearCart} className="mt-4 bg-black text-white px-6 py-2 rounded-full">Clear Cart</button>
+          <div className='flex gap-3'>
+            <button onClick={clearCart} className="mt-4 bg-black text-white px-6 py-2 rounded-full">Clear Cart</button>
+                    
+          <button onClick={clearCart} className="mt-4 bg-black text-white px-6 py-2 rounded-full">Confirm</button>
+
+          </div>
         </>
       )}
 

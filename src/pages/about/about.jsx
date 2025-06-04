@@ -21,11 +21,13 @@ const About = () => {
 
             {/* Main Content */}
             <div className='flex flex-col md:flex-row items-center justify-center font-extralight  mx-auto px-4 py-10 gap-8 md:gap-0'>
-                <img 
-                    className='w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg p-0 sm:p-6 md:p-10 object-cover rounded-lg' 
-                    src={images[0].image} 
-                    alt="About us" 
-                />
+                <figure className='hover01 w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg p-0 sm:p-6 md:p-10 object-cover rounded-lg'>
+                    <img 
+                        src={images[0].image} 
+                        alt="About us" 
+                        className='w-full object-cover rounded-lg' 
+                    />
+                </figure>
                 <div className='flex flex-col gap-6 sm:gap-8 md:gap-10 px-0 sm:px-4'>
                     <h1 className='text-2xl sm:text-3xl md:text-4xl font-semibold mb-2'>Our story</h1>
                     <p className='text-sm sm:text-base md:text-lg text-gray-700'>

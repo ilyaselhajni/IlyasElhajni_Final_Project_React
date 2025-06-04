@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.hover01 figure img {
+  transform: scale(1);
+  transition: 0.3s ease-in-out;
+}
+.hover01 figure:hover img {
+  transform: scale(1.3);
+}
