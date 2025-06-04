@@ -70,7 +70,7 @@ export default function Navbar() {
         {/* Nav Links (desktop) */}
         <ul className="hidden lg:flex gap-8 text-lg font-medium">
           <a href="/">          <li  className="text-red-500">Home</li></a>
-          <li className="hover:text-red-500 cursor-pointer">Shop</li>
+          <a href="/shop"><li className="hover:text-red-500 cursor-pointer">Shop</li></a>
           <li className="hover:text-red-500 cursor-pointer">Sale</li>
           <li className="hover:text-red-500 cursor-pointer">Features</li>
           <li className="hover:text-red-500 cursor-pointer">Blog</li>
