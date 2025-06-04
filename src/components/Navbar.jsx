@@ -75,7 +75,7 @@ export default function Navbar() {
           <li className="hover:text-red-500 cursor-pointer">Features</li>
           <li className="hover:text-red-500 cursor-pointer">Blog</li>
           <a href="/about"><li className="hover:text-red-500 cursor-pointer">About</li></a>
-          <li className="hover:text-red-500 cursor-pointer">Contact</li>
+          <a href="/contact"><li className="hover:text-red-500 cursor-pointer">Contact</li></a>
         </ul>
         {/* User/Cart (desktop) */}
         <div className="hidden lg:flex items-center gap-6">

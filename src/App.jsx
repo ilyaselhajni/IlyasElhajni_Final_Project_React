@@ -4,6 +4,7 @@ import HomePage from './pages/home/HomePage';
 import Navbar from './components/Navbar';
 import ErrorPage from './pages/error/ErrorPage';
 import About from './pages/about/about';
+import Contact from './pages/contact/contact';
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Route path="*" element={<ErrorPage />} />
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<About />} />
+         <Route path="/contact" element={<Contact />} />
       </Routes>
     </>
   );
