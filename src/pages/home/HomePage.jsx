@@ -26,6 +26,8 @@ import blogImg1 from '../../assets/images/blog-01.jpg';
 import blogImg2 from '../../assets/images/blog-02.jpg';
 import blogImg3 from '../../assets/images/blog-03.jpg';
 import Footer from '../../components/Footer';
+import { useCart } from '../../context/CartContext';
+import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
     const sliderRef = useRef(null);
@@ -34,6 +36,8 @@ const HomePage = () => {
     const [activeTab, setActiveTab] = useState('Best Seller');
     const tabList = ['all', 'Best Seller', 'Featured', 'Home page'];
     const [timer, setTimer] = useState({ days: 0, hours: 0, mins: 0, secs: 0 });
+    const { addToCart } = useCart();
+    const navigate = useNavigate();
 
     const settings = {
         dots: true,
@@ -383,6 +387,10 @@ const HomePage = () => {
                                 )}
                                 {/* Add to cart button overlay - bottom center, slide up on hover */}
                                 <button
+                                    onClick={() => {
+                                        addToCart(filters);
+                                        navigate('/cart');
+                                    }}
                                     className="absolute left-1/2 bottom-4 -translate-x-1/2 translate-y-6 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 bg-black text-white px-6 py-2 rounded-full font-montserrat text-sm font-semibold transition-all duration-300 shadow-lg hover:bg-[#E65641]"
                                     style={{ pointerEvents: 'auto' }}
                                 >
@@ -477,7 +485,6 @@ const HomePage = () => {
                 </div>
             </div>
 
-            {/* Instagram Follow Section */}
             <div className='text-center flex flex-col gap-4 sm:gap-10 px-4'>
                 <h1 className='text-lg sm:text-2xl'>@ FOLLOW US ON INSTAGRAM</h1>
                 <div className='flex flex-col sm:flex-row gap-4 justify-center'>
