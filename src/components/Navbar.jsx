@@ -49,18 +49,15 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Main Navbar */}
       <nav
         className={`flex items-center justify-between px-8 py-4 bg-white w-full z-50 transition-all duration-300 fixed top-0 left-0 border-b ${
           showTopBar ? "mt" : "mt-0"
         }`}
         style={{ top: showTopBar ? "48px" : "0" }}
       >
-        {/* Logo */}
         <div className="flex items-center gap-2 text-3xl font-bold">
           <img src={logo} alt="" />
         </div>
-        {/* Hamburger for mobile */}
         <button
           className="lg:hidden block text-3xl focus:outline-none"
           onClick={() => setMobileMenuOpen(true)}
@@ -68,17 +65,15 @@ export default function Navbar() {
         >
           <i className="fas fa-bars"></i>
         </button>
-        {/* Nav Links (desktop) */}
         <ul className="hidden lg:flex gap-8 text-lg font-medium">
           <a href="/">          <li  className="text-red-500">Home</li></a>
           <a href="/shop"><li className="hover:text-red-500 cursor-pointer">Shop</li></a>
           <li className="hover:text-red-500 cursor-pointer">Sale</li>
           <li className="hover:text-red-500 cursor-pointer">Features</li>
-          <li className="hover:text-red-500 cursor-pointer">Blog</li>
+          <a href="/blog"><li className="hover:text-red-500 cursor-pointer">Blog</li></a>
           <a href="/about"><li className="hover:text-red-500 cursor-pointer">About</li></a>
           <a href="/contact"><li className="hover:text-red-500 cursor-pointer">Contact</li></a>
         </ul>
-        {/* User/Cart (desktop) */}
         <div className="hidden lg:flex items-center gap-6">
           <Link to="/account">
             <i className="fas fa-user-circle text-2xl text-gray-400"></i>
@@ -90,7 +85,6 @@ export default function Navbar() {
           </div>
         </div>
       </nav>
-      {/* Mobile Slide-out Menu */}
       <div
         className={`fixed inset-0 z-[100] bg-black/40 transition-opacity duration-300 ${
           mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
@@ -103,7 +97,6 @@ export default function Navbar() {
           }`}
           onClick={e => e.stopPropagation()}
         >
-          {/* Header */}
           <div className="flex items-center justify-between px-6 py-4 border-b">
             <div className="flex items-center gap-2 text-3xl font-bold">
               Fashe<span className="text-red-500">.</span>
@@ -116,7 +109,6 @@ export default function Navbar() {
               <i className="fas fa-times"></i>
             </button>
           </div>
-          {/* Info */}
           <div className="px-6 py-2 border-b">
             <div className="text-gray-500 text-sm mb-1">Free shipping for standard order over $100</div>
             <div className="text-gray-500 text-sm mb-1">fashe@example.com</div>
@@ -128,7 +120,6 @@ export default function Navbar() {
               ))}
             </div>
           </div>
-          {/* Menu */}
           <ul className="flex flex-col gap-2 px-0 py-4 text-lg font-medium bg-[#E65641] text-white">
             <li className="px-6 py-3 flex justify-between items-center border-b border-[#e97a6a]">Home <i className="fas fa-chevron-right"></i></li>
             <li className="px-6 py-3 border-b border-[#e97a6a]">Shop</li>
@@ -138,7 +129,6 @@ export default function Navbar() {
             <li className="px-6 py-3 border-b border-[#e97a6a]">About</li>
             <li className="px-6 py-3">Contact</li>
           </ul>
-          {/* User/Cart (mobile) */}
           <div className="flex items-center gap-6 px-6 py-4 border-t">
             <Link to="/account">
               <i className="fas fa-user-circle text-2xl text-gray-400"></i>
@@ -151,7 +141,6 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-      {/* Spacer for fixed navbars */}
       <div className={showTopBar ? "h-28" : "h-16"}></div>
     </header>
   );

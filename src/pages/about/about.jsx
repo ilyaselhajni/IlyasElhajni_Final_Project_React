@@ -19,7 +19,6 @@ const About = () => {
                 <h1 className='text-3xl sm:text-5xl md:text-6xl font-bold text-center drop-shadow-lg'>ABOUT</h1>
             </div>
 
-            {/* Main Content */}
             <div className='flex flex-col md:flex-row items-center justify-center font-extralight  mx-auto px-4 py-10 gap-8 md:gap-0'>
                 <figure className='hover01 w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg p-0 sm:p-6 md:p-10 object-cover rounded-lg'>
                     <img 
