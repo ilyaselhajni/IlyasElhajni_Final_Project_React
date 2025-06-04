@@ -29,7 +29,6 @@ export default function Navbar() {
 
   return (
     <header className="p-0 m-0">
-      {/* Top Bar */}
       <div
         className={`transition-all duration-300 bg-gray-100 text-gray-500 text-sm px-4 py-2 flex justify-between items-center ${
           showTopBar ? "block" : "hidden"
@@ -70,12 +69,12 @@ export default function Navbar() {
         </button>
         {/* Nav Links (desktop) */}
         <ul className="hidden lg:flex gap-8 text-lg font-medium">
-          <li className="text-red-500">Home</li>
+          <a href="/">          <li  className="text-red-500">Home</li></a>
           <li className="hover:text-red-500 cursor-pointer">Shop</li>
           <li className="hover:text-red-500 cursor-pointer">Sale</li>
           <li className="hover:text-red-500 cursor-pointer">Features</li>
-          <li className="hover:text-red-500 cursor-pointer underline">Blog</li>
-          <li className="hover:text-red-500 cursor-pointer">About</li>
+          <li className="hover:text-red-500 cursor-pointer">Blog</li>
+          <a href="/about"><li className="hover:text-red-500 cursor-pointer">About</li></a>
           <li className="hover:text-red-500 cursor-pointer">Contact</li>
         </ul>
         {/* User/Cart (desktop) */}

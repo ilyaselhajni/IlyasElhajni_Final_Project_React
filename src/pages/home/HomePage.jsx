@@ -352,7 +352,8 @@ const HomePage = () => {
 
             {/* Product Listing Section */}
             <div className="max-w-7xl mx-auto px-4 py-8 sm:py-16">
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-4 sm:mb-6 font-montserrat uppercase tracking-wide">Our Products</h2>
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-4 sm:mb-6 font-montserrat uppercase tracking-wide">FEATURED PRODUCTS
+</h2>
                 {/* Tabs */}
                 <div className="flex justify-center gap-4 sm:gap-8 mb-6 sm:mb-10 font-montserrat text-sm sm:text-base font-medium">
                     {tabList.map(tab => (
@@ -372,7 +373,7 @@ const HomePage = () => {
                 {/* Product Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3">
                     {filteredProducts.map(filters => (
-                        <div key={filters.id} className="bg-white flex flex-col items-start shadow-sm">
+                        <div key={filters.id} className="bg-white flex flex-col items-start shadow-sm group relative">
                             <div className="relative w-full aspect-square overflow-hidden">
                                 <img src={filters.image} alt={filters.name} className="absolute inset-0 w-full h-full object-cover" />
                                 {filters.isSale && (
@@ -380,6 +381,13 @@ const HomePage = () => {
                                         Sale
                                     </span>
                                 )}
+                                {/* Add to cart button overlay - bottom center, slide up on hover */}
+                                <button
+                                    className="absolute left-1/2 bottom-4 -translate-x-1/2 translate-y-6 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 bg-black text-white px-6 py-2 rounded-full font-montserrat text-sm font-semibold transition-all duration-300 shadow-lg hover:bg-[#E65641]"
+                                    style={{ pointerEvents: 'auto' }}
+                                >
+                                    Add to cart
+                                </button>
                             </div>
                             <div className="p-2 sm:p-4">
                                 <div className="font-montserrat text-xs sm:text-sm text-gray-800 mb-1">{filters.name}</div>
@@ -488,7 +496,7 @@ const HomePage = () => {
                 </div>
             </div>
 
-            <Footer />
+                <Footer />
         </div>
     );
 };
